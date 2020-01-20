@@ -1,0 +1,9 @@
+
+Msquid:S1068"/Remove this unused "driver_save" private field.(à€¡Û8£§ğŠü-
+|squid:UselessImportCheck"LRemove this unused import 'com.google.firebase.database.ValueEventListener'.(‹ŞÜ‹ıÿÿÿÿ8ÕÿĞ“ü-
+Rsquid:EmptyStatementUsageCheck+"Remove this empty statement.(Åñ­õşÿÿÿÿ8°çÎ“ü-
+jsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ì×ï¸ùÿÿÿÿ
+wsquid:UselessImportCheck
+"GRemove this unused import 'com.google.firebase.database.DatabaseError'.(ˆÔµıÿÿÿÿ8ÕÿĞ“ü-
+qsquid:UselessImportCheck	"FRemove this unused import 'com.google.firebase.database.DataSnapshot'.(şÇŒ„8ÕÿĞ“ü-
+usquid:S00116"VRename this field "driver_save" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à€¡Û8£§ğŠü-

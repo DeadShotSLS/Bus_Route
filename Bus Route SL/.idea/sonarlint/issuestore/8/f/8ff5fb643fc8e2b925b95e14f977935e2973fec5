@@ -1,0 +1,20 @@
+
+ squid:S1186†"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›Şã8¦•ÒÕù-
+tsquid:S00116"URename this field "register_d" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìıá8¿¸Õù-
+9squid:S3626`"Remove this redundant jump.(ûÁİ…8±ÈŸ÷û-
+9squid:S3626Q"Remove this redundant jump.(ûÁİ…8±ÈŸ÷û-
+9squid:S3626]"Remove this redundant jump.(ûÁİ…8±ÈŸ÷û-
+9squid:S3626T"Remove this redundant jump.(ûÁİ…8±ÈŸ÷û-
+Jsquid:S1172†"+Remove this unused method parameter "user".(›Şã8¦•ÒÕù-
+isquid:S00116"QRename this field "name_d" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü÷Á®
+9squid:S3626Z"Remove this redundant jump.(ûÁİ…8±ÈŸ÷û-
+Zsquid:UnusedPrivateMethod†"-Remove this unused private "updateUI" method.(›Şã8“ÛÚù-
+nsquid:CommentedOutCodeLined"<This block of commented-out lines of code should be removed.(òî•íüÿÿÿÿ8ˆÜôäû-
+isquid:CommentedOutCodeLinep"<This block of commented-out lines of code should be removed.(á„Õ©8ˆÜôäû-
+nsquid:CommentedOutCodeLinej"<This block of commented-out lines of code should be removed.(É”ÙÄûÿÿÿÿ8ˆÜôäû-
+qsquid:S00116"TRename this field "email_reg" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ãõ¨Œøÿÿÿÿ
+jsquid:CommentedOutCodeLine€"<This block of commented-out lines of code should be removed.(Ğ£Ç»8ˆÜôäû-
+usquid:S00117L"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’÷˜›ıÿÿÿÿ8ˆÜôäû-
+nsquid:S00116%"VRename this field "driver_save" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à€¡Û
+nsquid:S00116"QRename this field "bus_no" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼íâğüÿÿÿÿ
+9squid:S3626W"Remove this redundant jump.(ûÁİ…8±ÈŸ÷û-

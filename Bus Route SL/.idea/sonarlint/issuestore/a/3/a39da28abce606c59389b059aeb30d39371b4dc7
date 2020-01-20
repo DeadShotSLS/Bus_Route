@@ -1,0 +1,8 @@
+
+nsquid:CommentedOutCodeLine^"<This block of commented-out lines of code should be removed.(£ÿÇÚùÿÿÿÿ8èô¶åû-
+csquid:UselessImportCheck"8Remove this unused import 'android.provider.MediaStore'.(ãçšþ8×ŸÂäû-
+`squid:UselessImportCheck"0Remove this unused import 'java.io.IOException'.(ªº»Úýÿÿÿÿ8×ŸÂäû-
+^squid:UselessImportCheck"4Remove this unused import 'android.graphics.Bitmap'.(¾ì8×ŸÂäû-
+esquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¾ÊˆØ
+Dsquid:S1170#"!Make this final field static too.(›‡”“ùÿÿÿÿ8û³ºäû-
+squid:S00116#"]Rename this field "PICK_IMAGE_REQUEST" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›‡”“ùÿÿÿÿ8û³ºäû-

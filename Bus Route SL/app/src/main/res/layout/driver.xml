@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradiantsearch">
+
+
+    <ImageView
+        android:id="@+id/image_search_bus_no"
+        android:layout_width="200dp"
+        android:layout_height="177dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="93dp"
+        android:layout_marginLeft="93dp"
+        android:layout_marginEnd="118dp"
+        android:layout_marginRight="118dp"
+        android:layout_marginBottom="542dp"
+        app:srcCompat="@drawable/bus_search" />
+
+    <TextView
+        android:id="@+id/bus_hello"
+        android:layout_width="271dp"
+        android:layout_height="71dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="469dp"
+        android:text=""
+        android:textSize="50dp" />
+
+    <Switch
+        android:id="@+id/switch_bus_available"
+        android:layout_width="254dp"
+        android:layout_height="72dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="62dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginBottom="359dp"
+        android:text="Bus is Available"
+        android:textSize="25dp" />
+
+    <Switch
+        android:id="@+id/switch_seat_available"
+        android:layout_width="254dp"
+        android:layout_height="72dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="65dp"
+        android:layout_marginRight="65dp"
+        android:layout_marginBottom="276dp"
+        android:text="Seat is Available"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/status_bus"
+        android:layout_width="312dp"
+        android:layout_height="69dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="46dp"
+        android:layout_marginBottom="155dp"
+        android:background="#F0E7E7"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Write your Status\neg -: Today Bus is available"
+        android:inputType="textMultiLine"
+        android:textColorHint="#140202" />
+
+    <Button
+        android:id="@+id/button_status_submit"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="118dp"
+        android:layout_marginRight="118dp"
+        android:layout_marginBottom="76dp"
+        android:background="@drawable/buttonuse"
+        android:text="Submit" />
+
+
+</RelativeLayout>

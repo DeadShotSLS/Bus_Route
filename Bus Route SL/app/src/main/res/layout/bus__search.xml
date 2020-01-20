@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradiantsearch">
+
+
+    <ImageView
+        android:id="@+id/image_search_bus_no"
+        android:layout_width="280dp"
+        android:layout_height="248dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginRight="59dp"
+        android:layout_marginBottom="416dp"
+        app:srcCompat="@drawable/bus_search" />
+
+    <EditText
+        android:id="@+id/search_bus_no"
+        android:layout_width="341dp"
+        android:layout_height="54dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="295dp"
+        android:background="#61DB56"
+        android:drawableLeft="@drawable/ic_bus_black_24dp"
+        android:ems="10"
+        android:inputType="textCapCharacters"
+        android:maxLength="6"
+        android:hint="Bus No" />
+
+    <Button
+        android:id="@+id/search_bus"
+        android:layout_width="279dp"
+        android:layout_height="67dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="162dp"
+        android:background="@drawable/button_search"
+        android:text="Search"
+        android:textColor="#F38B71"
+        android:textSize="20sp" />
+</RelativeLayout>

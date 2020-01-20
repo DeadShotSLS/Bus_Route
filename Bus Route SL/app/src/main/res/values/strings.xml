@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Bus Route</string>
+
+    <string-array name="spinner_start_time_part">
+        <item>00.00-01.00</item>
+        <item>01.00-02.00</item>
+        <item>02.00-03.00</item>
+        <item>03.00-04.00</item>
+        <item>04.00-05.00</item>
+        <item>05.00-06.00</item>
+        <item>06.00-07.00</item>
+        <item>07.00-08.00</item>
+        <item>08.00-09.00</item>
+        <item>09.00-10.00</item>
+        <item>10.00-11.00</item>
+        <item>11.00-12.00</item>
+        <item>12.00-13.00</item>
+        <item>13.00-14.00</item>
+        <item>14.00-15.00</item>
+        <item>15.00-16.00</item>
+        <item>16.00-17.00</item>
+        <item>17.00-18.00</item>
+        <item>18.00-19.00</item>
+        <item>19.00-20.00</item>
+        <item>20.00-21.00</item>
+        <item>21.00-22.00</item>
+        <item>22.00-23.00</item>
+        <item>23.00-00.00</item>
+    </string-array>
+
+    <string name="email">Email</string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+    <string name="text_spinner">Text_Spinner_Selected</string>
+    <string name="name_user">Name</string>
+    <string name="radio_passenger">passenger</string>
+    <string name="btn_display">Display</string>
+
+</resources>

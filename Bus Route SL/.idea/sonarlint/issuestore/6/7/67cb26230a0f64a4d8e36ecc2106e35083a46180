@@ -1,0 +1,36 @@
+
+psquid:S00117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øşù8šûùû-
+Ksquid:S1481Z"-Remove this unused "mAuthLit" local variable.(û«Ï¥8ıÓŠü-
+usquid:S00116*"QRename this field "bus_no" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó÷Ÿ¢úÿÿÿÿ8á–÷©ù-
+isquid:CommentedOutCodeLineW"<This block of commented-out lines of code should be removed.(º¸ˆ¨8£„ÍŠü-
+nsquid:CommentedOutCodeLine`"<This block of commented-out lines of code should be removed.(ÚĞù«ıÿÿÿÿ8û’ÛŠü-
+Tsquid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+9squid:S3626r"Remove this redundant jump.(ûÁİ…8Ÿâíùû-
+osquid:S00117K"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹îõK8šûùû-
+ysquid:S00116,"URename this field "status_bus" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çšÙüÿÿÿÿ8Ï¨Ôùû-
+usquid:S00116/"QRename this field "Busref" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áÕ¢¿úÿÿÿÿ8òµÖ©ù-
+Hsquid:S1481X"*Remove this unused "mAuth" local variable.(ä²ùé8¶ÌÎŠü-
+Ssquid:S1481Y"0Remove this unused "mFirebaseDb" local variable.(ÈÛ‰ùÿÿÿÿ8Š¸ÑŠü-
+isquid:S00116&"QRename this field "bus_NO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒÛê
+Hsquid:S1481["*Remove this unused "myref" local variable.(èË¸Â8™ŞÕŠü-
+Xsquid:S1481L"5Remove this unused "switchState_seat" local variable.(äû‚èÿÿÿÿÿ8šûùû-
+vsquid:S1450$"SRemove the "auth" field and declare it as a local variable in the relevant methods.(Ú‡›æøÿÿÿÿ8ÔßÓù-
+]squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8ëØ©«ù-
+gsquid:S1854L"DRemove this useless assignment to local variable "switchState_seat".(äû‚èÿÿÿÿÿ8šûùû-
+`squid:S1854K"CRemove this useless assignment to local variable "switchState_bus".(‹îõK8šûùû-
+Nsquid:S1481\"+Remove this unused "userId" local variable.(ÎÖ¡ışÿÿÿÿ8ºâ×Šü-
+ksquid:HiddenFieldCheckK"CRename "switchState_bus" which hides the field declared at line 39.(‹îõK8šûùû-
+ysquid:S00116'"ZRename this field "switchState_bus" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ…¡£8ôúó©ù-
+Msquid:S10683"/Remove this unused "driver_save" private field.(à€¡Û8¹ßÇùû-
+asquid:UselessImportCheck"8Remove this unused import 'android.widget.ArrayAdapter'.( €ŠÑÿÿÿÿÿ
+rsquid:HiddenFieldCheckL"DRename "switchState_seat" which hides the field declared at line 40.(äû‚èÿÿÿÿÿ8šûùû-
+Gsquid:S1659/"$Declare "Busref" on a separate line.(áÕ¢¿úÿÿÿÿ8òµÖ©ù-
+Qsquid:S1481K"4Remove this unused "switchState_bus" local variable.(‹îõK8šûùû-
+psquid:S00117H"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹·øà8šûùû-
+Tsquid:UselessImportCheck")Remove this unused import 'java.sql.Ref'.(Ë­¤8ê‰ñùû-
+zsquid:S00116("[Rename this field "switchState_seat" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ’±Ú8±óô©ù-
+usquid:S00117L"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äû‚èÿÿÿÿÿ8šûùû-
+nsquid:S001163"VRename this field "driver_save" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à€¡Û
+psquid:S00117n"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾µîº8Ÿâíùû-
+†squid:S1845*"cRename field "bus_no" to prevent any misunderstanding/clash with field "bus_NO" defined on line 38.(Ó÷Ÿ¢úÿÿÿÿ8á–÷©ù-
+rsquid:S001164"SRename this field "bus_save" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í¶¬é8§Ëİ¨ù-

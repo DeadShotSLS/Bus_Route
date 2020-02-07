@@ -8,7 +8,6 @@
     android:background="@drawable/gradiant_home">
 
 
-
     <ImageView
         android:id="@+id/image_main"
         android:layout_width="match_parent"
@@ -117,6 +116,14 @@
         android:layout_marginBottom="37dp"
         android:background="@drawable/buttonpassenger"
         android:text="I am a Passenger" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="185dp"
+        android:layout_height="168dp"
+        android:layout_centerInParent="true"
+        android:minWidth="50dp"
+        android:minHeight="50dp" />
 
 
 </RelativeLayout>

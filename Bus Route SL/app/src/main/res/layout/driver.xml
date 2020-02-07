@@ -91,5 +91,13 @@
         android:background="@drawable/buttonuse"
         android:text="Submit" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="185dp"
+        android:layout_height="168dp"
+        android:layout_centerInParent="true"
+        android:minWidth="50dp"
+        android:minHeight="50dp" />
+
 
 </RelativeLayout>

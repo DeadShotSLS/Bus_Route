@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,8 @@ public class Register extends AppCompatActivity {
     Button register_d;
     FirebaseUser userid;
 
+    ProgressBar progressBar;
+
     private FirebaseAuth auth;
 
     FirebaseDatabase database;
@@ -44,6 +47,9 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
 
         auth = FirebaseAuth.getInstance();
 
@@ -62,6 +68,7 @@ public class Register extends AppCompatActivity {
         register_d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
                 register();
             }
         });
@@ -78,29 +85,35 @@ public class Register extends AppCompatActivity {
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return;
         }else if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return;
         }else if (TextUtils.isEmpty(name)) {
             Toast.makeText(getApplicationContext(), "Enter Your name!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return;
         }else if (TextUtils.isEmpty(busNo)) {
             Toast.makeText(getApplicationContext(), "Enter Your Bus Registration Number!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return;
         }else if (TextUtils.isEmpty(Mobile)) {
             Toast.makeText(getApplicationContext(), "Enter Mobile Number!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return;
         }else if (password.length() < 6) {
             Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
             return;
         }else {
 
 
-            //progressBar.setVisibility(View.VISIBLE);
             //create user
             auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
+
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             Toast.makeText(Register.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
@@ -120,12 +133,10 @@ public class Register extends AppCompatActivity {
                             } else {
                                 Toast.makeText(Register.this, "Authentication failed." + task.getException(),
                                         Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
                             }
                         }
                     });
-            //progressBar.setVisibility(View.GONE);
-
-
         }
     }
 

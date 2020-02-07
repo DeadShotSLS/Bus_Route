@@ -4,15 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.renderscript.Sampler;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,9 +25,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Ref;
-import java.util.ArrayList;
-
 public class Driver extends AppCompatActivity {
 
     String prevStarted = "prevStarted";
@@ -41,6 +36,10 @@ public class Driver extends AppCompatActivity {
     String bus_no_t;
     Button submit;
     EditText status_bus;
+
+    ProgressBar progressBar;
+
+    String bus_no;
 
     FirebaseDatabase database;
     DatabaseReference ref,Busref;
@@ -55,6 +54,9 @@ public class Driver extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.driver);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
 
         bus_save = new Bus_Save();
         driver_save = new Driver_Save();
@@ -74,8 +76,22 @@ public class Driver extends AppCompatActivity {
         ref.child(userid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String bus_no = dataSnapshot.child("bus_no").getValue(String.class);
+                progressBar.setVisibility(View.VISIBLE);
+                bus_no = dataSnapshot.child("bus_no").getValue(String.class);
                 bus_NO.setText(bus_no);
+
+                String bus_no_t = bus_no;
+
+                //Toast.makeText(Driver.this, "bus number"+bus_no_t, Toast.LENGTH_SHORT).show();
+
+               /* bus_save.setBus_no_t(bus_no_t.toString());
+                bus_save.setBus_available(switchState_bus.booleanValue());
+                bus_save.setSeat_available(switchState_seat.booleanValue());
+
+                Busref.child(bus_no_t).setValue(bus_save);*/
+
+                progressBar.setVisibility(View.GONE);
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -93,15 +109,13 @@ public class Driver extends AppCompatActivity {
         boolean seat = switchState_seat.booleanValue();
 
 
-        String busno = driver_save.getBus_no();
+        Toast.makeText(Driver.this, "bus number"+bus_no_t, Toast.LENGTH_SHORT).show();
 
-        bus_no_t = busno;
-
-        bus_save.setBus_no_t(bus_no_t);
+        /*bus_save.setBus_no_t(bus_no_t.toString());
         bus_save.setBus_available(switchState_bus.booleanValue());
         bus_save.setSeat_available(switchState_seat.booleanValue());
 
-        Busref.child(bus_no_t).setValue(bus_save);
+        Busref.child(bus_no_t).setValue(bus_save);*/
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +133,7 @@ public class Driver extends AppCompatActivity {
             return;
         }else {
             bus_save.setStatus_bus(status_bus.getText().toString());
-            Busref.child(bus_no_t).setValue(bus_save);
+           // Busref.child(bus_no_t).setValue(bus_save);
         }
     }
 

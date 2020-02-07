@@ -103,25 +103,23 @@ public class Register extends AppCompatActivity {
                     .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            //FirebaseUser userid = auth.getCurrentUser();
-                            //updateUI(userid);
                             Toast.makeText(Register.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-                            if (!task.isSuccessful()) {
-                                Toast.makeText(Register.this, "Authentication failed." + task.getException(),
-                                        Toast.LENGTH_SHORT).show();
-                                //updateUI(null);
-                            } else {
+                            if (task.isSuccessful()) {
 
-                                driver_save.setEmail_reg(email_reg.getText().toString());
-                                driver_save.setPass(pass.getText().toString());
+                                String userid = auth.getCurrentUser().getUid();
+
+                                driver_save.setUserid(userid);
                                 driver_save.setName_d(name_d.getText().toString());
                                 driver_save.setBus_no(bus_no.getText().toString());
                                 driver_save.setPhone(phone.getText().toString());
 
-                                ref.push().setValue(driver_save);
+                                ref.child(userid).setValue(driver_save);
 
                                 startActivity(new Intent(Register.this, Driver.class));
                                 finish();
+                            } else {
+                                Toast.makeText(Register.this, "Authentication failed." + task.getException(),
+                                        Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -129,10 +127,6 @@ public class Register extends AppCompatActivity {
 
 
         }
-    }
-
-    private void updateUI(FirebaseUser user) {
-
     }
 
 

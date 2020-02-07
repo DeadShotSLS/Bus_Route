@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -33,24 +34,21 @@ public class Driver extends AppCompatActivity {
 
     String prevStarted = "prevStarted";
 
-    private FirebaseAuth auth;
-
     TextView bus_NO;
     Boolean switchState_bus;
     Boolean switchState_seat;
     String location;
-    String bus_no;
+    String bus_no_t;
     Button submit;
     EditText status_bus;
 
     FirebaseDatabase database;
     DatabaseReference ref,Busref;
-
+    private FirebaseAuth auth;
     FirebaseUser userid;
 
     private Driver_Save driver_save;
     private Bus_Save bus_save;
-
 
 
     @Override
@@ -59,41 +57,21 @@ public class Driver extends AppCompatActivity {
         setContentView(R.layout.driver);
 
         bus_save = new Bus_Save();
+        driver_save = new Driver_Save();
 
         database =FirebaseDatabase.getInstance();
         Busref = database.getReference().child("Bus_Save");
 
         auth = FirebaseAuth.getInstance();
+        ref = FirebaseDatabase.getInstance().getReference("Driver_Save");
+
+        String userid = auth.getCurrentUser().getUid();
 
         submit = (Button) findViewById(R.id.button_status_submit);
         status_bus = (EditText)findViewById(R.id.status_bus);
         bus_NO = (TextView) findViewById(R.id.bus_hello);
 
-        Switch bus_available = (Switch) findViewById(R.id.switch_bus_available);
-        Switch seat_available = (Switch) findViewById(R.id.switch_seat_available);
-
-        Boolean switchState_bus = bus_available.isChecked();
-        Boolean switchState_seat = seat_available.isChecked();
-
-
-
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                submit();
-            }
-        });
-
-       // String currentuser = FirebaseAuth.getInstance();
-        FirebaseAuth mAuth ;
-        FirebaseDatabase mFirebaseDb;
-        FirebaseAuth.AuthStateListener mAuthLit;
-        DatabaseReference myref;
-        String userId;
-
-        ref = FirebaseDatabase.getInstance().getReference("Driver_Save");
-
-/*        ref.child(currentuser).addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.child(userid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String bus_no = dataSnapshot.child("bus_no").getValue(String.class);
@@ -103,7 +81,34 @@ public class Driver extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });*/
+        });
+
+        Switch bus_available = (Switch) findViewById(R.id.switch_bus_available);
+        Switch seat_available = (Switch) findViewById(R.id.switch_seat_available);
+
+        Boolean switchState_bus = bus_available.isChecked();
+        Boolean switchState_seat = seat_available.isChecked();
+
+        boolean bus = switchState_bus.booleanValue();
+        boolean seat = switchState_seat.booleanValue();
+
+
+        String busno = driver_save.getBus_no();
+
+        bus_no_t = busno;
+
+        bus_save.setBus_no_t(bus_no_t);
+        bus_save.setBus_available(switchState_bus.booleanValue());
+        bus_save.setSeat_available(switchState_seat.booleanValue());
+
+        Busref.child(bus_no_t).setValue(bus_save);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submit();
+            }
+        });
     }
 
     private void submit(){
@@ -114,7 +119,7 @@ public class Driver extends AppCompatActivity {
             return;
         }else {
             bus_save.setStatus_bus(status_bus.getText().toString());
-            Busref.child(bus_no).setValue(bus_save);
+            Busref.child(bus_no_t).setValue(bus_save);
         }
     }
 
@@ -134,21 +139,18 @@ public class Driver extends AppCompatActivity {
         {
             Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Help_d.class));
-
         }
         else if(id== R.id.nav_my_bus)
         {
             Toast.makeText(this, "My Bus", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, My_Bus.class));
-
-
         }
         else if(id== R.id.nav_about_us)
         {
             Toast.makeText(this, "About Us", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, About_Us.class));
-
-        }else if(id== R.id.nav_log_out)
+        }
+        else if(id== R.id.nav_log_out)
         {
             Toast.makeText(this, "Log Out", Toast.LENGTH_SHORT).show();
             logout();
@@ -170,6 +172,4 @@ public class Driver extends AppCompatActivity {
         startActivity(new Intent(Driver.this, MainActivity.class));
         finish();
     }
-
-
 }

@@ -7,17 +7,29 @@ public class Bus_Save {
     private Boolean seat_available;
     private String bus_no_t;
     private String loaction;
+    private String bus_no;
 
-    public Bus_Save() {
-    }
-
-    public Bus_Save(String status_bus, Boolean bus_available, Boolean seat_available, String bus_no_t, String loaction) {
+    public Bus_Save(String status_bus, Boolean bus_available, Boolean seat_available, String bus_no_t, String loaction, String bus_no) {
         this.status_bus = status_bus;
         this.bus_available = bus_available;
         this.seat_available = seat_available;
         this.bus_no_t = bus_no_t;
         this.loaction = loaction;
+        this.bus_no = bus_no;
     }
+
+    public Bus_Save(){
+
+    }
+
+    public String getBus_no() {
+        return bus_no;
+    }
+
+    public void setBus_no(String bus_no) {
+        this.bus_no = bus_no;
+    }
+
 
     public String getStatus_bus() {
         return status_bus;
@@ -43,7 +55,8 @@ public class Bus_Save {
         this.seat_available = seat_available;
     }
 
-    public String getBus_no_t(String bus_no_t) {
+
+    public String getBus_no_t() {
         return bus_no_t;
     }
 
@@ -58,4 +71,6 @@ public class Bus_Save {
     public void setLoaction(String loaction) {
         this.loaction = loaction;
     }
+
+
 }

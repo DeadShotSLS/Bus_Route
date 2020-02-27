@@ -25,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Map;
+
 public class Driver extends AppCompatActivity {
 
     String prevStarted = "prevStarted";
@@ -37,9 +39,11 @@ public class Driver extends AppCompatActivity {
     Button submit;
     EditText status_bus;
 
+    String bus_no;
+    String Bus_NO = "Bus_NO";
+
     ProgressBar progressBar;
 
-    String bus_no;
 
     FirebaseDatabase database;
     DatabaseReference ref,Busref;
@@ -48,6 +52,9 @@ public class Driver extends AppCompatActivity {
 
     private Driver_Save driver_save;
     private Bus_Save bus_save;
+
+    SharedPreferences sharedPreferences;
+
 
 
     @Override
@@ -59,48 +66,15 @@ public class Driver extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
 
         bus_save = new Bus_Save();
-        driver_save = new Driver_Save();
-
-        database =FirebaseDatabase.getInstance();
-        Busref = database.getReference().child("Bus_Save");
-
-        auth = FirebaseAuth.getInstance();
-        ref = FirebaseDatabase.getInstance().getReference("Driver_Save");
-
-        String userid = auth.getCurrentUser().getUid();
 
         submit = (Button) findViewById(R.id.button_status_submit);
         status_bus = (EditText)findViewById(R.id.status_bus);
         bus_NO = (TextView) findViewById(R.id.bus_hello);
 
-        ref.child(userid).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                progressBar.setVisibility(View.VISIBLE);
-                bus_no = dataSnapshot.child("bus_no").getValue(String.class);
-                bus_NO.setText(bus_no);
-
-                String bus_no_t = bus_no;
-
-                //Toast.makeText(Driver.this, "bus number"+bus_no_t, Toast.LENGTH_SHORT).show();
-
-               /* bus_save.setBus_no_t(bus_no_t.toString());
-                bus_save.setBus_available(switchState_bus.booleanValue());
-                bus_save.setSeat_available(switchState_seat.booleanValue());
-
-                Busref.child(bus_no_t).setValue(bus_save);*/
-
-                progressBar.setVisibility(View.GONE);
-
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
         Switch bus_available = (Switch) findViewById(R.id.switch_bus_available);
         Switch seat_available = (Switch) findViewById(R.id.switch_seat_available);
+
+        viewBusno();
 
         Boolean switchState_bus = bus_available.isChecked();
         Boolean switchState_seat = seat_available.isChecked();
@@ -108,14 +82,9 @@ public class Driver extends AppCompatActivity {
         boolean bus = switchState_bus.booleanValue();
         boolean seat = switchState_seat.booleanValue();
 
+        bus_no = bus_save.getBus_no();
 
-        Toast.makeText(Driver.this, "bus number"+bus_no_t, Toast.LENGTH_SHORT).show();
-
-        /*bus_save.setBus_no_t(bus_no_t.toString());
-        bus_save.setBus_available(switchState_bus.booleanValue());
-        bus_save.setSeat_available(switchState_seat.booleanValue());
-
-        Busref.child(bus_no_t).setValue(bus_save);*/
+        Toast.makeText(Driver.this, "bus number : "+ bus_no, Toast.LENGTH_LONG).show();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,18 +92,62 @@ public class Driver extends AppCompatActivity {
                 submit();
             }
         });
+
     }
 
+    private void viewBusno(){
+
+        driver_save = new Driver_Save();
+        bus_save = new Bus_Save();
+
+
+        auth = FirebaseAuth.getInstance();
+        ref = FirebaseDatabase.getInstance().getReference("Driver_Save");
+
+        String userid = auth.getCurrentUser().getUid();
+
+
+
+        ref.child(userid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
+
+                String bus_no = dataSnapshot.child("bus_no").getValue(String.class);
+                bus_NO.setText(bus_no);
+
+                database =FirebaseDatabase.getInstance();
+                Busref = database.getReference().child("Bus_Save");
+
+                bus_save.setBus_no(bus_no);
+                bus_save.setStatus_bus("No status");
+                bus_save.setBus_available(false);
+                bus_save.setSeat_available(false);
+
+                Busref.child(bus_no).setValue(bus_save);
+
+                progressBar.setVisibility(View.GONE);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+    }
+
+
+
     private void submit(){
-        String Status = status_bus.getText().toString().trim();
+        /*String Status = status_bus.getText().toString().trim();
 
         if (TextUtils.isEmpty(Status)) {
             Toast.makeText(getApplicationContext(), "Enter Your Status!", Toast.LENGTH_SHORT).show();
             return;
         }else {
             bus_save.setStatus_bus(status_bus.getText().toString());
-           // Busref.child(bus_no_t).setValue(bus_save);
-        }
+           Busref.child(bus_no_t).setValue(bus_save);
+        }*/
     }
 
     @Override

@@ -111,6 +111,11 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 //progressBar.setVisibility(View.VISIBLE);
+                if(email == "admin" && password == "123456789"){
+                    Intent intent = new Intent(MainActivity.this, Admin_Mode.class);
+                    startActivity(intent);
+                    finish();
+                }else {
 
                 //authenticate user
                auth.signInWithEmailAndPassword(email, password)
@@ -139,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
-            }
+            }}
         });
 
     }

@@ -24,8 +24,8 @@ public class Route_Search extends AppCompatActivity {
         start_d = findViewById(R.id.start_destination);
         final_d = findViewById(R.id.final_destination);
 
-        Button advance_search =findViewById(R.id.button_advance_search);
-        advance_search.setOnClickListener(new View.OnClickListener(){
+        Button search =findViewById(R.id.button_search);
+        search.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
 
@@ -37,7 +37,7 @@ public class Route_Search extends AppCompatActivity {
                     String start_text = String.format(start_d.getText().toString());
                     String final_text = String.format(final_d.getText().toString());
 
-                    Intent intent = new Intent(Route_Search.this, Advance_Search.class);
+                    Intent intent = new Intent(Route_Search.this, Route_Search_Result.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("start_text", start_text);
                     intent.putExtra("final_text",final_text);

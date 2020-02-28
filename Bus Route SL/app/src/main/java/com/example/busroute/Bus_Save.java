@@ -35,7 +35,7 @@ public class Bus_Save {
         return status_bus;
     }
 
-    public void setStatus_bus(String status) {
+    public void setStatus_bus(String status_bus) {
         this.status_bus = status_bus;
     }
 

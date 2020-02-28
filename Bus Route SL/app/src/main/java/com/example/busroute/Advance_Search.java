@@ -17,7 +17,6 @@ public class Advance_Search extends AppCompatActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.advance_search);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setTitle("Advance_search");

@@ -7,11 +7,11 @@
         android:icon="@drawable/ic_help_black_24dp"
         android:title="Help" />
 
-    <item
+   <!-- <item
         android:id="@+id/nav_my_bus"
         android:icon="@drawable/ic_bus_black_24dp"
         android:title="Add Route Details" />
-
+-->
     <item
         android:id="@+id/nav_about_us"
         android:icon="@drawable/ic_about_black_24dp"

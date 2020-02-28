@@ -60,7 +60,7 @@
         android:ems="10"
         android:hint="Final Destination" />
 
-    <Button
+   <!-- <Button
         android:id="@+id/button_advance_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
         android:layout_marginBottom="25dp"
         android:background="@drawable/button_search_advance"
         android:text="Advance Search"
-        android:textSize="10sp" />
+        android:textSize="10sp" />-->
 
     <Button
         android:id="@+id/button_search"

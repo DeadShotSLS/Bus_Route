@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ public class Bus_Search_result extends AppCompatActivity {
     TextView seat_available;
     TextView busNo;
     TextView status;
-    //Map map;
+    Button location;
 
     FirebaseDatabase database;
     DatabaseReference ref,Busref;
@@ -48,12 +49,12 @@ public class Bus_Search_result extends AppCompatActivity {
         bus_available = (TextView)findViewById(R.id.text_bus);
         seat_available = (TextView)findViewById(R.id.text_seat);
         status = (TextView)findViewById(R.id.text_status);
-        //map = (Map)findViewById(R.id.map_bus);
+        location = (Button)findViewById(R.id.button_location);
 
         database = FirebaseDatabase.getInstance();
         Busref = database.getReference().child("Bus_Save");
 
-        String bus_no = Bus_No;
+        final String bus_no = Bus_No;
 
         Toast.makeText(Bus_Search_result.this, "bus no :"+bus_no, Toast.LENGTH_SHORT).show();
 
@@ -66,6 +67,18 @@ public class Bus_Search_result extends AppCompatActivity {
 
                     if(b_available == true){
                         bus_available.setText("Bus is Available");
+                        location.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String Bus_No = String.format(bus_no);
+
+                                Intent intent = new Intent(Bus_Search_result.this, Location.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.putExtra("Bus_No", Bus_No);
+                                startActivity(intent);
+
+                            }
+                        });
                         if(s_available == true){
                             seat_available.setText("Seat is Available");
                         }else {
@@ -104,6 +117,8 @@ public class Bus_Search_result extends AppCompatActivity {
             }
 
         });
+
+
 
 
 

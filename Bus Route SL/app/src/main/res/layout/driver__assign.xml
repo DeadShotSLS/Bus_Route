@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Driver_Assign"
+    android:background="@drawable/gradiant_advance_search">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="344dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="608dp"
+        android:text="Driver Assign To Bus"
+        android:textColor="#950A39"
+        android:textSize="35dp" />
+
+    <EditText
+        android:id="@+id/bus_no2"
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="77dp"
+        android:layout_marginRight="77dp"
+        android:layout_marginBottom="495dp"
+        android:ems="10"
+        android:hint="Bus Number"
+        android:inputType="textCapCharacters"
+        android:maxLength="6" />
+
+    <EditText
+        android:id="@+id/licence"
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:layout_marginBottom="422dp"
+        android:ems="10"
+        android:hint="Driver Licence Number"
+        android:inputType="textCapCharacters"
+        android:maxLength="8"/>
+
+    <Button
+        android:id="@+id/bus_to_d"
+        android:layout_width="193dp"
+        android:layout_height="63dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="96dp"
+        android:layout_marginRight="96dp"
+        android:layout_marginBottom="329dp"
+        android:text="Submit"
+        android:background="@drawable/buttondriver"/>
+</RelativeLayout>

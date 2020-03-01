@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +40,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,14 +68,17 @@ public class Driver extends AppCompatActivity {
 
 
     FirebaseDatabase database;
-    DatabaseReference ref,Busref;
+    DatabaseReference ref,Busref,Aref,Lref;
     private FirebaseAuth auth;
     FirebaseUser userid;
 
     private Driver_Save driver_save;
     private Bus_Save bus_save;
+    private Location_Save location_save;
 
     SharedPreferences sharedPreferences;
+
+    LocationRequest request = new LocationRequest();
 
 
 
@@ -81,16 +88,25 @@ public class Driver extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.driver);
 
-        HashMap<String, String> Bus_No = new HashMap<String, String>();
-
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
 
         bus_save = new Bus_Save();
+        location_save = new Location_Save();
+
 
         submit = (Button) findViewById(R.id.button_status_submit);
         status_bus = (EditText)findViewById(R.id.status_bus);
         bus_NO = (TextView) findViewById(R.id.bus_hello);
+
+        Intent intent = getIntent();
+        String Bus_No = String.valueOf(intent.getStringExtra("Bus_No"));
+
+        Toast.makeText(Driver.this, "bus no :"+Bus_No,Toast.LENGTH_SHORT).show();
+
+        bus_no = Bus_No;
+        bus_NO.setText(bus_no);
+
 
         final Switch bus_available = (Switch) findViewById(R.id.switch_bus_available);
         final Switch seat_available = (Switch) findViewById(R.id.switch_seat_available);
@@ -101,7 +117,7 @@ public class Driver extends AppCompatActivity {
                 if(bus_available.isChecked()){
                     bus_save.setBus_available(true);
                     Busref.child(bus_no).setValue(bus_save);
-                    //Location();
+                    requestLocationUpdates(bus_no);
                 }else {
                     bus_save.setBus_available(false);
                     Busref.child(bus_no).setValue(bus_save);
@@ -122,13 +138,7 @@ public class Driver extends AppCompatActivity {
             }
         });
 
-        viewBusno();
 
-        Toast.makeText(Driver.this, "bus no :"+bus_save.getBus_no(),Toast.LENGTH_SHORT).show();
-
-        //bus_no = bus_save.getBus_no();
-
-        bus_no = "TT0003";
 
         database =FirebaseDatabase.getInstance();
         Busref = database.getReference().child("Bus_Save");
@@ -148,39 +158,71 @@ public class Driver extends AppCompatActivity {
         });
     }
 
-    public String  viewBusno(){
+    public static boolean isLocationEnabled(Context context) {
+        int locationMode = 0;
+        String locationProviders;
 
-        driver_save = new Driver_Save();
-        bus_save = new Bus_Save();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            try {
+                locationMode = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE);
 
-        auth = FirebaseAuth.getInstance();
-        ref = FirebaseDatabase.getInstance().getReference("Driver_Save");
-
-        String userid = auth.getCurrentUser().getUid();
-
-        ref.child(userid).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                progressBar.setVisibility(View.VISIBLE);
-
-                String bus_no = dataSnapshot.child("bus_no").getValue(String.class);
-                bus_NO.setText(bus_no);
-
-                bus_save.setBus_no(bus_no);
-
-                progressBar.setVisibility(View.GONE);
-
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
+            } catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
+                return false;
             }
 
-        });
+            return locationMode != Settings.Secure.LOCATION_MODE_OFF;
 
-        return bus_no;
+        }else{
+            locationProviders = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+            return !TextUtils.isEmpty(locationProviders);
+        }
     }
 
+    private void requestLocationUpdates(final String bus_no) {
+
+
+        LocationRequest request = new LocationRequest();
+
+//Specify how often your app should request the device’s location//
+
+        request.setInterval(10000);
+
+//Get the most accurate location data available//
+
+
+
+        request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        int permission = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+
+//If the app currently has access to the location permission...//
+        FusedLocationProviderClient client = new FusedLocationProviderClient(getApplicationContext());
+        if (permission == PackageManager.PERMISSION_GRANTED) {
+
+//...then request location updates//
+
+            client.requestLocationUpdates(request, new LocationCallback() {
+                @Override
+                public void onLocationResult(LocationResult locationResult) {
+
+//Get a reference to the database, so your app can perform read and write operations//
+
+
+                    Lref = FirebaseDatabase.getInstance().getReference().child("Location_Save");
+                    Location location = locationResult.getLastLocation();
+                    if (location != null) {
+
+                        location_save.setLatitude(location.getLatitude());
+                        location_save.setLongitude(location.getLongitude());
+                        location_save.setBus_no(bus_no);
+                        Lref.child(bus_no).setValue(location_save);
+
+                    }
+                }
+            }, null);
+        }
+    }
 
 
     private void submit(String bus_no){

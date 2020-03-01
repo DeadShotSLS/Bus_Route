@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Bus_Assign"
+    android:background="@drawable/gradiant_register">
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="345dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginBottom="621dp"
+        android:text="Bus Assign To Route"
+        android:textColor="#950A39"
+        android:textSize="35dp" />
+
+    <EditText
+        android:id="@+id/bus_no"
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="74dp"
+        android:layout_marginRight="74dp"
+        android:layout_marginBottom="512dp"
+        android:ems="10"
+        android:hint="Bus Number"
+        android:inputType="textCapCharacters"
+        android:maxLength="6" />
+
+    <EditText
+        android:id="@+id/text_route_no"
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="73dp"
+        android:layout_marginRight="73dp"
+        android:layout_marginBottom="446dp"
+        android:ems="10"
+        android:hint="Route Number"
+        android:inputType="textCapCharacters" />
+
+    <Button
+        android:id="@+id/bus_to_route"
+        android:layout_width="193dp"
+        android:layout_height="63dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:layout_marginBottom="353dp"
+        android:background="@drawable/buttonpassenger"
+        android:text="Submit" />
+</RelativeLayout>

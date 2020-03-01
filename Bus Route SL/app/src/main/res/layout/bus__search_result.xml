@@ -17,9 +17,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="508dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginBottom="489dp"
         android:textSize="30dp" />
 
     <TextView
@@ -29,21 +29,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="108dp"
-        android:layout_marginRight="108dp"
-        android:layout_marginBottom="663dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginRight="113dp"
+        android:layout_marginBottom="649dp"
         android:textSize="30dp" />
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/map_bus"
-        android:layout_width="match_parent"
-        android:layout_height="347dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="0dp" />
 
     <TextView
         android:id="@+id/text_bus"
@@ -54,19 +43,19 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="585dp"
+        android:layout_marginBottom="572dp"
         android:textSize="30dp" />
 
     <TextView
         android:id="@+id/text_status"
-        android:layout_width="372dp"
-        android:layout_height="96dp"
+        android:layout_width="371dp"
+        android:layout_height="165dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="358dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="252dp"
         android:text=""
         android:textSize="25dp" />
 
@@ -77,11 +66,24 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="107dp"
-        android:layout_marginRight="107dp"
-        android:layout_marginBottom="460dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginRight="116dp"
+        android:layout_marginBottom="425dp"
         android:text="Status"
         android:textColor="#090909"
         android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/button_location"
+        android:layout_width="279dp"
+        android:layout_height="78dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_marginBottom="125dp"
+        android:text="Get Location"
+        android:background="@drawable/button_search"/>
 
 </RelativeLayout>

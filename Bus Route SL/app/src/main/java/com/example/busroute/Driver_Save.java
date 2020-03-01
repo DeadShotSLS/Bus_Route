@@ -8,6 +8,19 @@ public class Driver_Save {
     private String bus_no;
     private String phone;
     private String userid;
+    private String licence;
+
+    public Driver_Save(String licence) {
+        this.licence = licence;
+    }
+
+    public String getLicence() {
+        return licence;
+    }
+
+    public void setLicence(String licence) {
+        this.licence = licence;
+    }
 
     public String getUserid() {
         return userid;

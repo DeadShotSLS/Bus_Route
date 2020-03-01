@@ -27,6 +27,7 @@ public class Register extends AppCompatActivity {
     EditText name_d;
     EditText bus_no;
     EditText phone;
+    EditText licence;
     Button register_d;
     FirebaseUser userid;
 
@@ -56,7 +57,7 @@ public class Register extends AppCompatActivity {
         email_reg = (EditText) findViewById(R.id.Reg_Email);
         pass = (EditText) findViewById(R.id.Reg_pass);
         name_d = (EditText)findViewById(R.id.Reg_Name);
-        bus_no = (EditText)findViewById(R.id.Reg_BusNo);
+        licence = (EditText)findViewById(R.id.Reg_Licence);
         phone = (EditText)findViewById(R.id.Reg_mobile);
         register_d = (Button) findViewById(R.id.button_register);
 
@@ -79,7 +80,7 @@ public class Register extends AppCompatActivity {
         String email = email_reg.getText().toString().trim();
         String password = pass.getText().toString().trim();
         String name = name_d.getText().toString().trim();
-        String busNo = bus_no.getText().toString().trim();
+        String Licence = licence.getText().toString().trim();
         String Mobile = phone.getText().toString().trim();
 
 
@@ -95,8 +96,8 @@ public class Register extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Enter Your name!", Toast.LENGTH_SHORT).show();
             progressBar.setVisibility(View.GONE);
             return;
-        }else if (TextUtils.isEmpty(busNo)) {
-            Toast.makeText(getApplicationContext(), "Enter Your Bus Registration Number!", Toast.LENGTH_SHORT).show();
+        }else if (TextUtils.isEmpty(Licence)) {
+            Toast.makeText(getApplicationContext(), "Enter Your Licence Number!", Toast.LENGTH_SHORT).show();
             progressBar.setVisibility(View.GONE);
             return;
         }else if (TextUtils.isEmpty(Mobile)) {
@@ -123,12 +124,13 @@ public class Register extends AppCompatActivity {
 
                                 driver_save.setUserid(userid);
                                 driver_save.setName_d(name_d.getText().toString());
-                                driver_save.setBus_no(bus_no.getText().toString());
+                                driver_save.setLicence(licence.getText().toString());
+                                driver_save.setEmail_reg(email_reg.getText().toString());
                                 driver_save.setPhone(phone.getText().toString());
 
                                 ref.child(userid).setValue(driver_save);
 
-                                startActivity(new Intent(Register.this, Driver.class));
+                                startActivity(new Intent(Register.this, My_Bus.class));
                                 finish();
                             } else {
                                 Toast.makeText(Register.this, "Authentication failed." + task.getException(),

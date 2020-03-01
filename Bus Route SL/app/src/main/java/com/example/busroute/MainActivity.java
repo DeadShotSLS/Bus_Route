@@ -20,6 +20,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     Button login;
     Button passengers;
     private FirebaseAuth auth;
+    FirebaseDatabase database;
+    DatabaseReference Aref;
 
     ProgressBar progressBar;
 
@@ -48,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(MainActivity.this, Driver.class));
+            startActivity(new Intent(MainActivity.this, My_Bus.class));
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.putBoolean(prevStarted, Boolean.TRUE);
             editor.apply();
@@ -111,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 //progressBar.setVisibility(View.VISIBLE);
-                if(email == "admin" && password == "123456789"){
-                    Intent intent = new Intent(MainActivity.this, Admin_Mode.class);
+                if(email.equals("admin@gmail.com") && password.equals("123456789")){
+                    Intent intent = new Intent(MainActivity.this, Admin.class);
                     startActivity(intent);
                     finish();
                 }else {
@@ -137,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                                         progressBar.setVisibility(View.GONE);
                                     }
                                 } else {
-                                    Intent intent = new Intent(MainActivity.this, Driver.class);
+                                    Intent intent = new Intent(MainActivity.this, My_Bus.class);
                                     startActivity(intent);
                                     finish();
                                 }
